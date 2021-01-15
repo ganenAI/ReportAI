@@ -145,6 +145,12 @@ predict sin　計算結果図
 ![alt](https://user-images.githubusercontent.com/77253188/104737527-b55e7500-5787-11eb-961f-bd5faa0849d0.png)<br>
 
 
+<br>
+<br>
+<br>
 
+
+
+## ◎深層学習　day4　
 
 
