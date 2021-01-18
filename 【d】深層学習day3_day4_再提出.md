@@ -194,7 +194,6 @@ predict sin　計算結果図
 <br>
 <br>
 <br>
-<br>
 ## ◎深層学習　day4　モデル並列化
 <br>
 <br>
