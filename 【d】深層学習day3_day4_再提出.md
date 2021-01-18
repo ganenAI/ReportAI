@@ -189,11 +189,11 @@ predict sin　計算結果図
 <br>
 <br>
 <br>
-## ◎深層学習　day4　S2　AlphaGo
 ## ◎深層学習　day4　S3　データ並列化
 <br>
 <br>
 <br>
+## ◎深層学習　day4　S2　AlphaGo
 <br>
 ## ◎深層学習　day4　モデル並列化
 <br>
