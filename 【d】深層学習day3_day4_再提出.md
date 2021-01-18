@@ -233,10 +233,13 @@ predict sin　計算結果図
 <br>
 <br>
 ## ◎深層学習　day4　LayerNorm
+　　　・それぞれのsampleの全てのpixelsが同一分布に従うよう正規化<br>
+　　　・バッチサイズが1のBatch Normalizationに相当<br>
 <br>
 <br>
 <br>
 ## ◎深層学習　day4　WaveNet
+　　　・さらにchannelも同一分布に従うよう正規化<br>
 <br>
 <br>
 <br>
