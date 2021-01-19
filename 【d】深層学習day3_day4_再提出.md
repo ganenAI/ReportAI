@@ -152,7 +152,8 @@ predict sin　計算結果図
 
 
 ## ◎深層学習　day4　S1　強化学習　<br>
-　　　（参考資料）最強囲碁AIアルファ碁解体新書<br>
+### 講義内容の要点
+参考### (参考資料）最強囲碁AIアルファ碁解体新書<br>
 　　　・強化学習とは、AI自身による成功体験を基に行動を改善していく仕組み。<br>
 　　　　未知の情報を含む環境下での長期的な価値最大化を目指す。<br>
 　　　・探索　…　「未知の情報を含む環境下での価値最大化」を図る（見つける）ための探索行動<br>
@@ -176,8 +177,8 @@ predict sin　計算結果図
 　　　・バリューネットの学習　…　CNNの予想勝率が学習データに近づくようしていく（学習する　）<br>
 　　　・モンテカルロ木探索　…　通常のモンテカルロ法に、UCB1（勝率+バイアス）が大きくなる経路（打ち手）を選択する方法<br>
 　　　・AlphaGo(Lee)とAlphaGo Zeroの違い　…　<br>
-　　　　-ZeroはResidual Network(ResNet)構造を導入。
-　　　　-Zeroは学習に人間の対戦データは未使用。
+　　　　-ZeroはResidual Network(ResNet)構造を導入。<br>
+　　　　-Zeroは学習に人間の対戦データは未使用。<br>
 　　　　　・ResidualNetwork　…　学習対象を「最適出力」から残差（Residual）関数へ。<br>
 　　　・AlphaGo Zeroのモンテカルロ木探索　…　Rolloutを不要とした<br>
 　　　・AlphaGo Zeroの学習方法　…　AlphaGo Zero対AlphaGo Zeroで実施<br>
