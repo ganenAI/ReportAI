@@ -173,27 +173,31 @@ predict sin　計算結果図
 　　　・ポリシーネットワーク　…　次の手の選択肢毎の確率を与える。<br>
 　　　・バリューネットワーク　…　局面における勝敗確率を与える。<br>
 　　　・ロールアウトポリシー　…　ロジスティック回帰により次の手の候補の確率を与える。<br>
-　　　・ポリシーネットの教師あり学習　…　SLポリシーネットワーク<br>
-　　　・ポリシーネットの強化学習　…　RLポリシーネットワーク<br>
+　　　・ポリシーネットの教師あり学習　…　SLポリシーネットワーク。KGS Go Serverより3000万局分の教師データを使用<br>
+　　　・ポリシーネットの強化学習　…　RLポリシーネットワー。強化学習過程500回毎の記録（PolicyPool）から抽出したものと対局シミュレーション。<br>
 　　　・バリューネットの学習　…　CNNの予想勝率が学習データに近づくようしていく（学習する　）<br>
 　　　・モンテカルロ木探索　…　通常のモンテカルロ法に、UCB1（勝率+バイアス）が大きくなる経路（打ち手）を選択する方法<br>
 　　　・AlphaGo(Lee)とAlphaGo Zeroの違い　…　<br>
 　　　　-ZeroはResidual Network(ResNet)構造を導入。<br>
-　　　　-Zeroは学習に人間の対戦データは未使用。<br>
+　　　　-Zeroは学習に人間の対戦データは未使用（教師なし学習）。<br>
+　　　　-ヒューリスティックを排除。<br>
+　　　　-ポリシーネットワークとバリューネットワークを統合。<br>
 　　　・ResidualNetwork　…　学習対象を「最適出力」から残差（Residual）関数へ。<br>
 　　　・AlphaGo Zeroのモンテカルロ木探索　…　Rollout（Play Out…勝敗がわかる手まで試行を進めすこと）を不要とした<br>
-　　　・AlphaGo Zeroの学習方法　…　AlphaGo Zero対AlphaGo Zeroの対戦で実施<br>
+　　　・AlphaGo Zeroの学習方法　…　AlphaGo Zero対AlphaGo Zeroの対戦（自己対局）で実施<br>
 <br>
 <br>
 <br>
 ## ◎深層学習　day4　S3　データ並列化
-　　　同一のデータを複数のモデル（厳密にはパラメータが異なる同一数理モデルと思われる）で処理。<br>
-<br>
+　　　データを複数に分割し同一の数のモデルで処理。データが多いときに有効。<br>
+　　　→同時に複数同一のモデルで処理されるので同一データ量の処理が単一で行うより時間が早まる。<br>
+<br>　モデル更新のタイミングで同期型/非同期型に分類。→精度の良い同期型が昨今の主流。
 <br>
 <br>
 ## ◎深層学習　day4　モデル並列化
-　　　データを複数に分割し同一の数のモデルで処理。<br>
-　　<br>
+　　　同一のデータを複数のモデル（パラメータが異なる同一数理モデル）で処理。モデルサイズが大きいときに有効。<br>
+　　　モデルパラメータ数が多いほど高速化。<br>
+　　　・GPUの使用が有効（データ並列、モデル並列ともに有効）<br>
 <br>
 <br>
 ## ◎深層学習　day4　量子化
@@ -203,24 +207,32 @@ predict sin　計算結果図
 <br>
 ## ◎深層学習　day4　蒸留
 　　　・モデルの軽量化手法の一つ　…　教師モデルから単純化した軽量な生徒モデルを作成し使用。
+　　　　精度の向上に貢献。<br>
 <br>
 <br>
 <br>
 ## ◎深層学習　day4　プルーニング
 　　　・モデルの軽量化手法の一つ<br>
+　　　・重要度の低いニューロンを削除することにより高速化。<br>
+　　　・ニューロンの削除は精度を落とす。<br>
 <br>
 <br>
 <br>
 ## ◎深層学習　day4　MobileNet
 　　　・ディープラーニングモデルの軽量化・高速化・高精度化<br>
-　　　・Depthwise Convolution<br>
-　　　・Pointwise Convolution<br>
-　　　・Depthwise Separable Convolution<br>
-　　　・Depthwise Convolution<br>
+　　　　→Depthwise ConvolutionとPointwise Convolutionで実現。
+　　　・Depthwise Convolution　…　層間の畳み込みを行なわないので計算量小<br>
+　　　・Pointwise Convolution　…　1×1の畳み込み。入力マップのポイント毎に畳み込みを実施。<br>
+　　　・Depthwise Separable Convolution　…　上記のDepthwise ConvolutionとPointwise Convolutionの二つに分けて畳み込みを行う方法<br>
+<br>
 <br>
 <br>
 ## ◎深層学習　day4　DenseNet
 　　　・CNNの一種<br>
+　　　・ResNetと似ているが、DenseNetでは各層からの出力が全ての後方層の入力となる（Densブロック）が、ReNetでは前1層の入力のみ後方の層へ入力。<br>
+　　　・特徴マップの入力→Batch正規化→Relu関数による返還→3 x 3畳み込み層による処理　で出力を計算。<br>
+　　　・growth rate　…　入力特徴マップのチャンネル数l×k,出力（l+1）×kとなるkの値<br>
+<br>
 <br>
 <br>
 ## ◎深層学習　day4　BatchNorm
@@ -231,29 +243,51 @@ predict sin　計算結果図
 <br>
 ## ◎深層学習　day4　LayerNorm
 　　　・それぞれのsampleの全てのpixelsが同一分布に従うよう正規化<br>
+　　　・入力データのスケールに関してロバスト<br>
+　　　・重み行列のスケールやシフトに関してロバスト<br>
+<br>
+<br>
+<br>
+## ◎深層学習　day4　InstanceNorm
+　　　・channelも同一分布に従うよう正規化<br>
 　　　・バッチサイズが1のBatch Normalizationに相当<br>
 <br>
 <br>
 <br>
-## ◎深層学習　day4　WaveNet
+## ◎深層学習　day4　WaveNet　…　AlphaGp開発、2014Googleが買収
 　　　・時系列データに対して畳み込みを適用する<br>
-　　　・Dilated convolution<br>
+　　　・Dilated convolution　…　深い層のリンクを広げる。<br>
 　　　・深層学習を用いて結合確率を学習する際に、効率的に学習が行えるアーキテクチャ<br>
 <br>
 <br>
-## ◎深層学習　day4　Seq2Seq
+<br>
+## ◎深層学習　day4　Seq2Seq　…　翻訳、音声認識、チャットボット等で使用
+　　　・Encorder-Decorder Model<br>
+　　　・Transformer (Encorder-Decorder × Attention)<br>
+　　　・BERT<br>
+　　　・必要知識
+　　　　-RNN<br>
+　　　　-言語モデル　…　時刻t-1までの情報で、時刻tの事後確率を求めることが目標<br>
+　　　　-ソフトマックス関数で最大化<br>
+　　　<br>
+　　　<br>
+　　　<br>
+　　　<br>
 <br>
 <br>
 <br>
 ## ◎深層学習　day4　Transformer
+　　　<br>
 <br>
 <br>
 <br>
 ## ◎深層学習　day4　物体検知
+　　　<br>
 <br>
 <br>
 <br>
 ## ◎深層学習　day4　セグメンテーション
+　　　<br>
 <br>
 <br>
 <br>
