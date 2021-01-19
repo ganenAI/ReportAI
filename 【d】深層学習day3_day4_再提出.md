@@ -169,7 +169,7 @@ predict sin　計算結果図
 <br>
 ## ◎深層学習　day4　S2　AlphaGo
 ### 講義内容の要点
-### (参考資料）最強囲碁AIアルファ碁解体新書<br>
+#### (参考資料）最強囲碁AIアルファ碁解体新書<br>
 　　　・ポリシーネットワーク　…　次の手の選択肢毎の確率を与える。<br>
 　　　・バリューネットワーク　…　局面における勝敗確率を与える。<br>
 　　　・ロールアウトポリシー　…　ロジスティック回帰により次の手の候補の確率を与える。<br>
@@ -180,9 +180,9 @@ predict sin　計算結果図
 　　　・AlphaGo(Lee)とAlphaGo Zeroの違い　…　<br>
 　　　　-ZeroはResidual Network(ResNet)構造を導入。<br>
 　　　　-Zeroは学習に人間の対戦データは未使用。<br>
-　　　　　・ResidualNetwork　…　学習対象を「最適出力」から残差（Residual）関数へ。<br>
-　　　・AlphaGo Zeroのモンテカルロ木探索　…　Rolloutを不要とした<br>
-　　　・AlphaGo Zeroの学習方法　…　AlphaGo Zero対AlphaGo Zeroで実施<br>
+　　　・ResidualNetwork　…　学習対象を「最適出力」から残差（Residual）関数へ。<br>
+　　　・AlphaGo Zeroのモンテカルロ木探索　…　Rollout（Play Out…勝敗がわかる手まで試行を進めすこと）を不要とした<br>
+　　　・AlphaGo Zeroの学習方法　…　AlphaGo Zero対AlphaGo Zeroの対戦で実施<br>
 <br>
 <br>
 <br>
