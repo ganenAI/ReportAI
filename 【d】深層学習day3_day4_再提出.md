@@ -200,6 +200,13 @@ predict sin　計算結果図
 　　　・GPUの使用が有効（データ並列、モデル並列ともに有効）<br>
 <br>
 <br>
+## ◎深層学習　day4　GPUによる高速化（　…　GPUプログラミング（CUDA）開発経験豊富です）
+　　　・CUDAが一般的。（OpenCL使用の話をほとんど聞いたことがない）<br>
+　　　・同じNVIDIA社のGPUでも製品によりメモリ量、Capabilityが異なるため、使用する製品に合わせた設計が必要。<br>
+　　　・単純な並列処理であればCPUよりも圧倒的な高速化が可能。<br>
+　　　・高速化のためのチューニングは熟練が必要。<br>
+<br>
+<br>
 ## ◎深層学習　day4　量子化
 　　　・モデルの軽量化手法の一つ　…　重みの精度を落とし高速化と省メモリ化を図る<br>
 <br>
@@ -304,7 +311,37 @@ predict sin　計算結果図
 <br>
 <br>
 ## ◎深層学習　day4　物体検知
-　　　<br>
+　　　・分類　…　クラスラベル<br>
+　　　・物体検知　…　BB<br>
+　　　・意味領域分割　…　クラスラベル<br>
+　　　・個体領域分割　…　クラスラベル<br>
+　　　・代表的なデータセット<br>
+　　　　-VOC12　…　PASCAL VOC Object Detection Challenge。主要貢献者が2012年に亡くなったことに伴いコンペも終了。<br>
+　　　　-ILSVRC17　…　ImageNet（21,841クラス/1400万枚以上）のサブセット。コンペは2017年に終了（後継：Open Images Challenge）。<br>
+　　　　-MS COCO18　…　物体位置推定に対する新たな評価指標を提案。<br>
+　　　　-OICOD18　…　ILSVRCやMS COCOとは異なるannotation process。Open Images V4（6000クラス以上/900万枚以上）のサブセット<br>
+　　　・評価指標<br>
+　　　　-Confusion Matrix　…　機械学習の項参照<br>
+　　　　-IoU　=TP/(TP+FP+FN)　別名Jaccard係数<br>
+　　　　-AP：Average Precision　…　=∫P(R)dR　(0≦R≦1)<br>
+　　　　-mAP：mean Average Precision　…　APの平均値<br>
+　　　　-FPS：Flames per Second　…　単位秒あたりの処理枚数<br>
+　　　・物体検知の大枠　…　-2012年AlexNetの登場を皮切りに, 時代はSIFTからDCNNへ<br>
+　　　・物体検知のフレームワーク<br>
+　　　　-２段階検出器（Two-stage detector）　…　候補領域の検出とクラス推定を別々に行う。低速、精度高<br>
+　　　　-１段階検出器（One-stage detector）　…　候補領域の検出とクラス推定を同時に行う。高速、精度低<br>
+　　　・SSD　…　Default Boxを（検知物体に合わせ）変形しconf.を出力。<br>
+　　　　-ネットワークアーキテクチャ<br>
+　　　　　〇マルチスケール特徴マップ<br>
+　　　　　　□入力　SSD300、SSD512<br>
+　　　　　　□VGG16の10層目相当の畳み込み層<br>
+　　　　　　□VVGG16のFC2層は畳み込み層に変更<br>
+　　　　-多数のDefault Boxを用意したことで生ずる問題への対処<br>
+　　　　　〇Non-Maximum Suppression<br>
+　　　　　〇Hard Negative Mining<br>
+　　　　-損失関数　L(x, c, l, g) = 1/N × (L_conf(x, c) + α×L_loc(x, l, g))　L_conf(x, c)：confidenceに対する損失、L_loc(x, l, g)：検出位置に対する損失<br>
+　　　・<br>
+　　　・<br>
 <br>
 <br>
 <br>
@@ -319,10 +356,8 @@ predict sin　計算結果図
 　　　・SegNet　…　Encoderで特徴量抽出。Decorderでラベリング<br>
 　　　・DeconvNet　…　畳み込み層とmax-pooling層を交互に重ねる<br>
 　　　・Dilated Convolution　…　畳み込みの段階で受容野を広げる工夫<br>
-　　　・<br>
-　　　・<br><br>
-　　　・
 <br>
 <br>
+以上<br>
 
 
