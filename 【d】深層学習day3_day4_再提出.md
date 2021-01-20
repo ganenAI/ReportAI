@@ -265,19 +265,41 @@ predict sin　計算結果図
 　　　・Encorder-Decorder Model<br>
 　　　・Transformer (Encorder-Decorder × Attention)<br>
 　　　・BERT<br>
-　　　・必要知識
-　　　　-RNN<br>
+　　　・Seq2Seq必要知識
+　　　　-RNN、<br>
 　　　　-言語モデル　…　時刻t-1までの情報で、時刻tの事後確率を求めることが目標<br>
 　　　　-ソフトマックス関数で最大化<br>
-　　　<br>
-　　　<br>
-　　　<br>
-　　　<br>
+　　　・RNN　×　言語モデル<br>
+　　　　-(時)系列情報を内部状態に変換<br>
+　　　　-文章に各単語が現れる同時確率→事後確率で分解可。→事後確率の算出がRNNの目標<br>
+　　　　-言語モデルの再現をRNNで重み学習→次の単語予測を可能とする。→先頭単語から文章作成も可能。<br>
+　　　・Seq2seq<br>
+　　　　-encorderからdecorderへ渡される内部状態ベクトルがキーポイント<br>
+　　　　-decorderの構造はRNNとほぼ同じ<br>
+　　　　-decorderの初期値はencorder側の内部状態<br>
+　　　　-decorderの出力側に正解を持ってきて比較。→教師あり学習がend2endで可能。<br>
+　　　・実装演習
+　　　　（省略）
 <br>
 <br>
 <br>
 ## ◎深層学習　day4　Transformer
-　　　<br>
+　　　・Self-Attention(自己注意機構)　…　同一時系列内のAttention。<br>
+　　　・Atention　…　重要なものの重みを大きくする重要でないものは小さく学習していく。<br>
+　　　　-query　…　入力からくる検索対象
+　　　　-key　…　queryとの関連計測の索引
+　　　　-Value　…　キーの結果出力される値
+　　　・Encorder-Decorderモデルは長い文章に弱い→Atentionで対応。<br>
+　　　・ソースターゲット注意機構　…　入力Queryと索引が別物。<br>
+　　　・自己注意機構　…　入力Queryと索引が同じ。<br>
+　　　・Position-Wise Feed-Forward Networks　…　位置情報を保持したまま順伝搬。<br>
+　　　・Scqled dot product attention　…　前タンゴに関するattentionをまとめて計算。<br>
+　　　・Multi-Head attention　…　重みパラメタの異なる8個のヘッド。<br>
+　　　・Decorder　…　Encorderと同じ6層。Attentionは両方あり。
+　　　・Add & Norm　…　学習効率化テクニック<br>
+　　　・Position Encoerding　…　RNNを用いない為単語の語順情報追加<br>
+　　　・実装演習
+　　　　（省略）
 <br>
 <br>
 <br>
@@ -287,8 +309,19 @@ predict sin　計算結果図
 <br>
 <br>
 ## ◎深層学習　day4　セグメンテーション
-　　　<br>
-<br>
+　　　・FCN for Semantic Segamentation　…　FCNはSemantic Segamentationの様に、”ピクセル単位のタスクの高密度予測”を学ぶことができる<br>
+　　　・Deconvolution/Transposed convolution　…　unsampling<br>
+　　　　-通常のConv.層と同様, Kernel size, padding, strideを指定<br>
+　　　　-逆畳み込みとも呼ばれる。<br>
+　　　　-畳み込みの逆演算ではない。<br>
+　　　　-poolingにより失われた輪郭情報を補完<br>
+　　　・U-NET　…　効果的なデータ増量方法<br>
+　　　・SegNet　…　Encoderで特徴量抽出。Decorderでラベリング<br>
+　　　・DeconvNet　…　畳み込み層とmax-pooling層を交互に重ねる<br>
+　　　・Dilated Convolution　…　畳み込みの段階で受容野を広げる工夫<br>
+　　　・<br>
+　　　・<br><br>
+　　　・
 <br>
 <br>
 
