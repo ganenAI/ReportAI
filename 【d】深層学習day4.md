@@ -14,10 +14,8 @@
 　　・ゼロから作るDeep Learning　自然言語処理編<br>
 　　・最強囲碁AIアルファ碁解体新書<br>
 　　<br>
-
-
+## 講義内容の要点
 ## ◎深層学習　day4　S1　強化学習　<br>
-### 講義内容の要点
 　　・強化学習とは、AI自身による成功体験を基に行動を改善していく仕組み。<br>
 　　　未知の情報を含む環境下での長期的な価値最大化を目指す。<br>
 　　・探索　…　「未知の情報を含む環境下での価値最大化」を図る（見つける）ための探索行動<br>
@@ -32,7 +30,6 @@
 <br>
 <br>
 ## ◎深層学習　day4　S2　AlphaGo
-### 講義内容の要点
 　　・ポリシーネットワーク　…　次の手の選択肢毎の確率を与える。<br>
 　　・バリューネットワーク　…　局面における勝敗確率を与える。<br>
 　　・ロールアウトポリシー　…　ロジスティック回帰により次の手の候補の確率を与える。<br>
@@ -167,7 +164,7 @@
 　　・Position-Wise Feed-Forward Networks　…　位置情報を保持したまま順伝搬。<br>
 　　・Scqled dot product attention　…　前タンゴに関するattentionをまとめて計算。<br>
 　　・Multi-Head attention　…　重みパラメタの異なる8個のヘッド。<br>
-　　・Decorder　…　Encorderと同じ6層。Attentionは両方あり。
+　　・Decorder　…　Encorderと同じ6層。Attentionは両方あり。<br>
 　　・Add & Norm　…　学習効率化テクニック<br>
 　　・Position Encoerding　…　RNNを用いない為単語の語順情報追加<br>
 　　・実装演習
@@ -205,14 +202,14 @@
 　　　-多数のDefault Boxを用意したことで生ずる問題への対処<br>
 　　　　〇Non-Maximum Suppression<br>
 　　　　〇Hard Negative Mining<br>
-　　　-損失関数　L(x, c, l, g) = 1/N × (L_conf(x, c) + α×L_loc(x, l, g)<br>)
+　　　-損失関数　L(x, c, l, g) = 1/N × (L_conf(x, c) + α×L_loc(x, l, g))<br>
 　　　　L_conf(x, c)：confidenceに対する損失、L_loc(x, l, g)：検出位置に対する損失<br>
 <br>
 <br>
 <br>
 <br>
 ## ◎深層学習　day4　セグメンテーション
-　　・FCN for Semantic Segamentation　…　FCNはSemantic Segamentationの様に、"ピクセル単位のタスクの高密度予測"を学ぶことができる<br>
+　　・FCN for Semantic Segamentation　…　FCNはSemantic Segamentationの様に"ピクセル単位のタスクの高密度予測"を学ぶことが可能<br>
 　　・Deconvolution/Transposed convolution　…　unsampling<br>
 　　　-通常のConv.層と同様, Kernel size, padding, strideを指定<br>
 　　　-逆畳み込みとも呼ばれる。<br>
