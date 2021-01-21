@@ -158,9 +158,9 @@
 ## ◎深層学習　day4　Transformer
 　　・Self-Attention(自己注意機構)　…　同一時系列内のAttention。<br>
 　　・Atention　…　重要なものの重みを大きくする重要でないものは小さく学習していく。<br>
-　　　-query　…　入力からくる検索対象
-　　　-key　…　queryとの関連計測の索引
-　　　-Value　…　キーの結果出力される値
+　　　-query　…　入力からくる検索対象<br>
+　　　-key　…　queryとの関連計測の索引<br>
+　　　-Value　…　キーの結果出力される値<br>
 　　・Encorder-Decorderモデルは長い文章に弱い→Atentionで対応。<br>
 　　・ソースターゲット注意機構　…　入力Queryと索引が別物。<br>
 　　・自己注意機構　…　入力Queryと索引が同じ。<br>
@@ -205,14 +205,14 @@
 　　　-多数のDefault Boxを用意したことで生ずる問題への対処<br>
 　　　　〇Non-Maximum Suppression<br>
 　　　　〇Hard Negative Mining<br>
-　　　-損失関数　L(x, c, l, g) = 1/N × (L_conf(x, c) + α×L_loc(x, l, g))　L_conf(x, c)：confidenceに対する損失、L_loc(x, l, g)：検出位置に対する損失<br>
-　　・<br>
-　　・<br>
+　　　-損失関数　L(x, c, l, g) = 1/N × (L_conf(x, c) + α×L_loc(x, l, g)<br>)
+　　　　L_conf(x, c)：confidenceに対する損失、L_loc(x, l, g)：検出位置に対する損失<br>
+<br>
 <br>
 <br>
 <br>
 ## ◎深層学習　day4　セグメンテーション
-　　・FCN for Semantic Segamentation　…　FCNはSemantic Segamentationの様に、”ピクセル単位のタスクの高密度予測”を学ぶことができる<br>
+　　・FCN for Semantic Segamentation　…　FCNはSemantic Segamentationの様に、"ピクセル単位のタスクの高密度予測"を学ぶことができる<br>
 　　・Deconvolution/Transposed convolution　…　unsampling<br>
 　　　-通常のConv.層と同様, Kernel size, padding, strideを指定<br>
 　　　-逆畳み込みとも呼ばれる。<br>
